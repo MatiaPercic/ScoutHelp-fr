@@ -1,11 +1,39 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </nav>
-    <router-view/>
-  </div>
+  <nav class="navbar navbar-expand-md navbar-light">
+    <a class="navbar-brand" href="/">
+      <img
+        src="@/assets/wosm.png"
+        height="40"
+        class="d-inline-block align-top"
+        alt=""
+      />
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+      <form class="navbar-form ml-auto mr-auto">
+        <input
+          v-model="store.searchTerm"
+          class="form-control"
+          type="search"
+          placeholder="Pretraga"
+          aria-label="Search"
+        />
+      </form>
+      
+    </div>
+  </nav>
+ 
 </template>
 
 <style lang="scss">
@@ -25,7 +53,7 @@ nav {
     color: #2c3e50;
 
     &.router-link-exact-active {
-      color: #42b983;
+      color: #622599;
     }
   }
 }
