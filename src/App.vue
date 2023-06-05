@@ -15,21 +15,21 @@
       font-size: 20px;
       text-align: left;" 
       
-      to="login">Login</router-link>  | 
-
-      <router-link style="
-      text-decoration: none;
-      text-align: left;
-      font-size: 20px;"
-
-       to="/about">About</router-link>  | 
+      to="/">Login</router-link>  |  
 
        <router-link style="
       text-decoration: none;
       text-align: left;
       font-size: 20px;"
 
-       to="/register">Register</router-link>
+       to="/register">Register</router-link> |
+
+       <router-link style="
+      text-decoration: none;
+      text-align: left;
+      font-size: 20px;"
+
+       to="/about">About</router-link>
     </nav>
     
     <router-view/>
