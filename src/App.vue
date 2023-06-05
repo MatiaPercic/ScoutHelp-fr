@@ -5,8 +5,8 @@
       <a class="navbar_title">
         <img src="@/assets/scouthelp.png" 
           alt="" 
-          width="70" 
-          height="70"
+          width="90" 
+          height="90"
           >ScoutHelp
         </a>
         
@@ -22,8 +22,16 @@
       text-align: left;
       font-size: 20px;"
 
-       to="/about">About</router-link>
+       to="/about">About</router-link>  | 
+
+       <router-link style="
+      text-decoration: none;
+      text-align: left;
+      font-size: 20px;"
+
+       to="/register">Register</router-link>
     </nav>
+    
     <router-view/>
   </div>
 </template>
