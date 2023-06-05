@@ -5,8 +5,8 @@
       <a class="navbar_title">
         <img src="@/assets/scouthelp.png" 
           alt="" 
-          width="70" 
-          height="70"
+          width="90" 
+          height="90"
           >ScoutHelp
         </a>
         
