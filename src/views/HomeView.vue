@@ -2,50 +2,49 @@
   <div class="home">
     
     <h1 class="title">Dobrodošli na ScoutHelp</h1>
-    <p class="plain">Odaberite prijavu ili registraciju za nastavak korištenja stranice</p>
-
     
-    <button type="button" class="btn btn-secondary btn-lg"
-      style="
-        margin: 2em;
-        font-weight: bold;
-        font-size: large;
-        font-family: Arial;
-        color: #A020F0;
-        background-color: #fff;
-        border-color: #A020F0;
-        
-      ">
-        <router-link style="text-decoration: none;" to="login">Login</router-link>
-    </button>
+ <div id="app">
 
-    <button type="button" class="btn btn-secondary btn-lg"
-      style="
-        margin: 1em;
-        font-weight: bold;
-        font-size: large;
-        font-family: Arial;
-        color: #A020F0;
-        background-color: #fff;
-        border-color: #A020F0;
-        
-      ">
-        <router-link style="text-decoration: none;" to="Register">register</router-link>
-    </button>
-    </div>
+  <div v-for="v in volonteri" :key="v">
+    {{ v.ime }}
+    {{ v.prezime }}
+    {{ v.email }}
+    {{ v.godine }}
+    {{ v.br_aktivnosti }}
+    {{ v.br_sati }}
+
+ </div>
+</div>
+
+  </div>
   
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+
+
+console.log("outside mounted : ");
 
 export default {
   name: 'HomeView',
-  components: {
-    HelloWorld
+ 
+  
+  async mounted() {
+    
+    let response = await fetch("http://localhost:3001/volonteri");
+    console.log("in mounted: ");
+    console.log(response);
+  },
+  
+  data() {
+    return {
+      volonteri: [],
+    };
   }
 }
+
+
 </script>
 
 < style scoped>
