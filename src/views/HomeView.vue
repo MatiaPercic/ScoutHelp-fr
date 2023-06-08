@@ -32,9 +32,10 @@ export default {
   
   async mounted() {
     
-    let response = await fetch("http://localhost:3001/volonteri");
+    const response = await fetch("http://localhost:3001/volonteri");
     console.log("in mounted: ");
     console.log(response);
+    this.volonteri = await response.json();
   },
   
   data() {
