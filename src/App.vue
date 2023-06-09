@@ -1,10 +1,37 @@
 <template>
   <div id="app">
-    <nav class="navbar navbar-light" style="background-color: #A020F0;">
-      <p class="navbar_title">ScoutHelp</p>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <nav id="nav" class="navbar" style="background-color: #A020F0;">
+
+      <a class="navbar_title">
+        <img src="@/assets/scouthelp.png" 
+          alt="" 
+          width="90" 
+          height="90"
+          >ScoutHelp
+        </a>
+        
+      <router-link style="
+      text-decoration: none  ;
+      font-size: 20px;
+      text-align: left;" 
+      
+      to="/">Login</router-link>  |  
+
+       <router-link style="
+      text-decoration: none;
+      text-align: left;
+      font-size: 20px;"
+
+       to="/register">Register</router-link> |
+
+       <router-link style="
+      text-decoration: none;
+      text-align: left;
+      font-size: 20px;"
+
+       to="/about">About</router-link>
     </nav>
+    
     <router-view/>
   </div>
 </template>
@@ -19,29 +46,33 @@
 }
 
 .navbar_title {
-  text-align: center;
+  text-align: left;
   font-family: "Arial";
   color: #fff;
-  font-size: 30px;
+  font-size: 40px;
+  display: flex;
+    align-items: center;
+ 
+  
 }
 
 .navbar_element {
   font-family: "Arial";
   color: #FFF;
-  font-size: 40px;
-  margin: 10px;
+  font-size: 20px;
 }
 
 nav {
-  padding: 20px;
-
+  
+  padding: 5px;
   a {
     font-weight: bold;
     color: #fff;
-
+    
     &.router-link-exact-active {
       color: #42b983;
     }
   }
 }
 </style>
+
