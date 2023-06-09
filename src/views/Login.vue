@@ -3,14 +3,14 @@
     <h1>login page</h1>
 
     <div class="container">
-      <form class="form-horizontal">
+      <form class="form-horizontal" @submit="checkCredentials()" action="#" onsubmit="return false">
         <div class="form-group">
           <label for="exampleInputEmail1" class="plain">Email address</label>
 
           <div class="col-sm-10">
             <input
               type="email"
-              v-model="username"
+              v-model="loginCredentials.email"
               class="form-control"
               id="exampleInputEmail1"
               aria-describedby="emailHelp"
@@ -25,7 +25,7 @@
           <div class="col-sm-10">
             <input
               type="password"
-              v-model="password"
+              v-model="loginCredentials.password"
               class="form-control"
               id="exampleInputPassword1"
               placeholder="Password"
@@ -38,7 +38,7 @@
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <button
-              type="button"
+              type="submit"
               class="btn btn-primary"
               style="
                 margin: 2em;
@@ -57,7 +57,43 @@
       </form>
     </div>
   </div>
+
 </template>
+
+<script>
+
+import axios from "axios";
+
+
+export default {
+  name: 'login',
+
+  async mounted() {},
+  methods: {
+    checkCredentials() {
+      axios
+        .post("http://localhost:3001/login", this.loginCredentials)
+        .then(console.log("yes"))
+        .then((response) => {
+          this.$router.push({
+            name: "profil",
+          });
+        });
+    },
+  },
+  data() {
+    return {
+      adminLogin: 0,
+      loginCredentials: {
+        email: "mpercic@gmail.com",
+        password: "percic",
+      },
+    };
+  },
+    
+};
+
+</script>
 
 <style scoped>
 .plain {
