@@ -5,15 +5,7 @@
     
  <div id="app">
 
-  <div v-for="v in volonteri" :key="v">
-    {{ v.ime }}
-    {{ v.prezime }}
-    {{ v.email }}
-    {{ v.godine }}
-    {{ v.br_aktivnosti }}
-    {{ v.br_sati }}
-
- </div>
+ 
 </div>
 
   </div>
@@ -28,22 +20,8 @@ console.log("outside mounted : ");
 
 export default {
   name: 'HomeView',
- 
-  
-  async mounted() {
-    
-    const response = await fetch("http://localhost:3001/volonteri");
-    console.log("in mounted: ");
-    console.log(response);
-    this.volonteri = await response.json();
-  },
-  
-  data() {
-    return {
-      volonteri: [],
-    };
+
   }
-}
 
 
 </script>
