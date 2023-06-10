@@ -3,7 +3,12 @@
     <h1>login page</h1>
 
     <div class="container">
-      <form class="form-horizontal" @submit="checkCredentials()" action="#" onsubmit="return false">
+      <form
+        class="form-horizontal"
+        @submit="login()"
+        action="#"
+        onsubmit="return false"
+      >
         <div class="form-group">
           <label for="exampleInputEmail1" class="plain">Email address</label>
 
@@ -57,42 +62,53 @@
       </form>
     </div>
   </div>
-
 </template>
 
 <script>
-
 import axios from "axios";
 
-
 export default {
-  name: 'login',
+  name: "login",
 
   async mounted() {},
   methods: {
-    checkCredentials() {
+    clearUser(){
+      localStorage.removeItem('ime');
+    },
+
+    async setUser(user){
+      localStorage.setItem('ime',user.ime);
+    },
+
+    login() {
+
       axios
         .post("http://localhost:3001/login", this.loginCredentials)
-        .then(console.log("yes"))
+
         .then((response) => {
-          this.$router.push({
-            name: "profil",
-          });
+          console.log(response);
+
+          if (response.data) {
+            console.log(response.data);
+            this.clearUser();
+            this.setUser(response.data);
+            console.log(localStorage.getItem('ime'));
+            this.$router.push({
+              name: "profilVolonter",
+            });
+          } else alert("Greška pri prijavljivanju, pokušajte ponovno!");
         });
     },
   },
   data() {
     return {
-      adminLogin: 0,
       loginCredentials: {
-        email: "mpercic@gmail.com",
-        password: "percic",
+        email: "",
+        password: "",
       },
     };
   },
-    
 };
-
 </script>
 
 <style scoped>
