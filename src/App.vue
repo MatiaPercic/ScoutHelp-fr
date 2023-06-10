@@ -1,38 +1,41 @@
 <template>
   <div id="app">
-    <nav id="nav" class="navbar" style="background-color: #A020F0;">
-
+    <nav
+      class="navbar navbar-expand-lg navbar-light"
+      style="background-color: #a020f0"
+    >
       <a class="navbar_title">
-        <img src="@/assets/scouthelp.png" 
-          alt="" 
-          width="90" 
-          height="90"
-          >ScoutHelp
-        </a>
-        
-      <router-link style="
-      text-decoration: none  ;
-      font-size: 20px;
-      text-align: left;" 
-      
-      to="/">Login</router-link>  |  
-
-       <router-link style="
-      text-decoration: none;
-      text-align: left;
-      font-size: 20px;"
-
-       to="/register">Register</router-link> |
-
-       <router-link style="
-      text-decoration: none;
-      text-align: left;
-      font-size: 20px;"
-
-       to="/about">About</router-link>
-    </nav>
+        <img src="@/assets/scouthelp.png" alt="" height="50" />ScoutHelp
+      </a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="navbar_element">
+          <router-link style="text-decoration: none; font-size: 20px " to="/"
+            >Login</router-link
+          >
+          |
+        </li>
+        <li class="navbar_element">
+          <router-link
+            style="
+            text-decoration: none; font-size: 20px"
+            to="/register"
+            >Register</router-link
+          >
+          |
+        </li>
+        <router-link
+          style="
+            text-decoration: none;
     
-    <router-view/>
+            font-size: 20px;
+          "
+          to="/about"
+          >About</router-link
+        >
+      </ul>
+    </nav>
+
+    <router-view />
   </div>
 </template>
 
@@ -49,30 +52,34 @@
   text-align: left;
   font-family: "Arial";
   color: #fff;
-  font-size: 40px;
-  display: flex;
-    align-items: center;
- 
-  
+  font-size: 30px;
+  padding-right: 55%;
+
+  align-items: center;
 }
 
 .navbar_element {
+  text-align: right;
   font-family: "Arial";
-  color: #FFF;
+  color: #fff;
   font-size: 20px;
+  margin-left: 5px;
 }
 
 nav {
-  
-  padding: 5px;
+  padding: 30px;
   a {
     font-weight: bold;
     color: #fff;
+    text-align: right;
+    font-size: 20px;
+    margin-right: 0;
+
     
     &.router-link-exact-active {
       color: #42b983;
     }
   }
+  
 }
 </style>
-
