@@ -34,9 +34,10 @@
 .plain {
 
   
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
-  margin: 30px;
+  margin: 15px;
+
  
 }
 
