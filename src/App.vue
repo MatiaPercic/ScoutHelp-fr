@@ -8,42 +8,29 @@
         <img src="@/assets/scouthelp.png" alt="" height="50" />ScoutHelp
       </a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li  class="navbar_element">
-          <router-link style="text-decoration: none;"  to="/"
-            >Login</router-link
-          >
+        <li v-if="!loggedIn" class="navbar_element">
+          <router-link style="text-decoration: none" to="/">Login</router-link>
         </li>
-
-        <li  class="navbar_element">
-          <router-link
-            style="text-decoration: none; "
-            to="/register"
+        
+        <li v-if="!loggedIn" class="navbar_element">
+          <router-link style="text-decoration: none" to="/register"
             >Register</router-link
           >
-          
         </li>
-        <li class="navbar_element">
-          <router-link
-            style="
-              text-decoration: none;
-
-             
-            "
-            to="/about"
+        <li  v-if="loggedIn" class="navbar_element">
+          <router-link style="text-decoration: none" to="/profilVolonter"
+            >Profil</router-link
+          >
+        </li>
+        <li  v-on:click="check()" class="navbar_element">
+          <router-link style="text-decoration: none" to="/about"
             >About</router-link
           >
         </li>
 
-    
-          <li  class="navbar_element">
-          <router-link
-            style="text-decoration: none; "
-            to="/"
-            >Logout</router-link
-          >
-          
+        <li v-if="loggedIn" v-on:click="logout()" class="navbar_element">
+          <a style="text-decoration: none">Logout</a>
         </li>
-  
       </ul>
     </nav>
 
@@ -51,9 +38,47 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: "App",
 
+  data() {
+    return {
+      loggedIn: false,
+    };
+  },
 
-
+  created(){
+    this.check()
+  },
+  watch:{
+    loggedIn(){
+      this.check()
+    }
+  },
+  async mounted() {},
+  methods: {
+    logout() {
+      console.log(this.loggedIn);
+      localStorage.clear();
+      console.log(localStorage.getItem("ime"));
+      this.loggedIn = false;
+      console.log(this.loggedIn);
+      this.$router.push({ name: "login" });
+    },
+    check() {
+      if (localStorage.length > 0) {
+        console.log(localStorage.getItem("prezime"));
+        this.loggedIn = true;
+        console.log(this.loggedIn);
+      } else {
+        this.loggedIn = false;
+        console.log(this.loggedIn);
+      }
+    },
+  },
+};
+</script>
 
 <style lang="scss">
 #app {
