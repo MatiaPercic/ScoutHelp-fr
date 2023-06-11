@@ -74,10 +74,22 @@ export default {
   methods: {
     clearUser(){
       localStorage.removeItem('ime');
+      localStorage.removeItem('prezime');
+      localStorage.removeItem('godine');
+      localStorage.removeItem('email');
+      localStorage.removeItem('broj_aktivnosti');
+      localStorage.removeItem('broj_volonterskih_sati');
+
     },
 
     async setUser(user){
       localStorage.setItem('ime',user.ime);
+      localStorage.setItem('prezime',user.prezime);
+      localStorage.setItem('godine',user.godine);
+      localStorage.setItem('email',user.email);
+      localStorage.setItem('broj_aktivnosti',user.broj_aktivnosti);
+      localStorage.setItem('broj_volonterskih_sati',user.broj_volonterskih_sati);
+    
     },
 
     login() {
@@ -102,6 +114,7 @@ export default {
   },
   data() {
     return {
+
       loginCredentials: {
         email: "",
         password: "",

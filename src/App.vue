@@ -8,36 +8,48 @@
         <img src="@/assets/scouthelp.png" alt="" height="50" />ScoutHelp
       </a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="navbar_element">
-          <router-link style="text-decoration: none; font-size: 20px " to="/"
+        <li  class="navbar_element">
+          <router-link style="text-decoration: none;"  to="/"
             >Login</router-link
           >
-          |
+        </li>
+
+        <li  class="navbar_element">
+          <router-link
+            style="text-decoration: none; "
+            to="/register"
+            >Register</router-link
+          >
+          
         </li>
         <li class="navbar_element">
           <router-link
             style="
-            text-decoration: none; font-size: 20px"
-            to="/register"
-            >Register</router-link
+              text-decoration: none;
+
+             
+            "
+            to="/about"
+            >About</router-link
           >
-          |
         </li>
-        <router-link
-          style="
-            text-decoration: none;
-    
-            font-size: 20px;
-          "
-          to="/about"
-          >About</router-link
-        >
+
+        <li class="navbar_element">
+          <a style="text-decoration: none;"  to="/"
+            >
+          LogOut
+          </a>
+        </li>
       </ul>
     </nav>
 
     <router-view />
   </div>
 </template>
+
+
+
+
 
 <style lang="scss">
 #app {
@@ -53,7 +65,7 @@
   font-family: "Arial";
   color: #fff;
   font-size: 30px;
-  padding-right: 55%;
+  padding-right: 50%;
 
   align-items: center;
 }
@@ -62,7 +74,7 @@
   text-align: right;
   font-family: "Arial";
   color: #fff;
-  font-size: 20px;
+  font-size: 15px;
   margin-left: 5px;
 }
 
@@ -75,11 +87,9 @@ nav {
     font-size: 20px;
     margin-right: 0;
 
-    
     &.router-link-exact-active {
       color: #42b983;
     }
   }
-  
 }
 </style>
