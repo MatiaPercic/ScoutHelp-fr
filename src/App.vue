@@ -11,13 +11,18 @@
         <li v-on:click="check()" v-if="!loggedIn" class="navbar_element">
           <router-link style="text-decoration: none" to="/">Login</router-link>
         </li>
-
-        <li class="navbar_element">
+        
+        <li v-if="!loggedIn" class="navbar_element">
           <router-link style="text-decoration: none" to="/register"
             >Register</router-link
           >
         </li>
-        <li v-on:click="check()" class="navbar_element">
+        <li v-on:click="check()" v-if="loggedIn" class="navbar_element">
+          <router-link style="text-decoration: none" to="/profilVolonter"
+            >Profil</router-link
+          >
+        </li>
+        <li v-on:click="check()"  class="navbar_element">
           <router-link style="text-decoration: none" to="/about"
             >About</router-link
           >
@@ -43,6 +48,9 @@ export default {
     };
   },
 
+  created(){
+    this.check()
+  },
   async mounted() {
     this.check()
   },
