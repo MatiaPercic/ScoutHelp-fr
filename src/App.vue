@@ -34,12 +34,16 @@
           >
         </li>
 
-        <li class="navbar_element">
-          <a style="text-decoration: none;"  to="/"
-            >
-          LogOut
-          </a>
+    
+          <li  class="navbar_element">
+          <router-link
+            style="text-decoration: none; "
+            to="/"
+            >Logout</router-link
+          >
+          
         </li>
+  
       </ul>
     </nav>
 

@@ -70,6 +70,9 @@ import axios from "axios";
 export default {
   name: "login",
 
+  created(){
+    localStorage.clear();
+  },
   async mounted() {},
   methods: {
     clearUser(){
@@ -105,7 +108,7 @@ export default {
             this.clearUser();
             this.setUser(response.data);
             console.log(localStorage.getItem('ime'));
-            this.$router.push({
+            this.$router.replace({
               name: "profilVolonter",
             });
           } else alert("Greška pri prijavljivanju, pokušajte ponovno!");
