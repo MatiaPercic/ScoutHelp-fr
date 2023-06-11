@@ -66,6 +66,7 @@
 
 <script>
 import axios from "axios";
+import ProfilVolonter from "./ProfilVolonter.vue";
 
 export default {
   name: "login",
@@ -73,7 +74,15 @@ export default {
   created(){
     localStorage.clear();
   },
-  async mounted() {},
+  async mounted() {
+
+    let dataCheck=localStorage.getItem('ime');
+    if(dataCheck){
+      this.$router.push({name: "profilVolonter"});
+
+    }
+
+  },
   methods: {
     clearUser(){
       localStorage.removeItem('ime');
