@@ -8,7 +8,7 @@
         <img src="@/assets/scouthelp.png" alt="" height="50" />ScoutHelp
       </a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li v-on:click="check()" v-if="!loggedIn" class="navbar_element">
+        <li v-if="!loggedIn" class="navbar_element">
           <router-link style="text-decoration: none" to="/">Login</router-link>
         </li>
         
@@ -17,12 +17,12 @@
             >Register</router-link
           >
         </li>
-        <li v-on:click="check()" v-if="loggedIn" class="navbar_element">
+        <li  v-if="loggedIn" class="navbar_element">
           <router-link style="text-decoration: none" to="/profilVolonter"
             >Profil</router-link
           >
         </li>
-        <li v-on:click="check()"  class="navbar_element">
+        <li  v-on:click="check()" class="navbar_element">
           <router-link style="text-decoration: none" to="/about"
             >About</router-link
           >
@@ -51,9 +51,12 @@ export default {
   created(){
     this.check()
   },
-  async mounted() {
-    this.check()
+  watch:{
+    loggedIn(){
+      this.check()
+    }
   },
+  async mounted() {},
   methods: {
     logout() {
       console.log(this.loggedIn);
