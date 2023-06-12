@@ -2,35 +2,37 @@
   <div class="about">
     <h1>Registracija volontera</h1>
 
-
     <div class="container">
       <form>
         <div class="row justify-content-center">
           <div class="col-md-2">
             <input
               type="name"
-              v-model="name"
+              v-model="reg.ime"
               class="form-control"
               id="imputName"
               placeholder="Ime"
+              required
             />
           </div>
           <div class="col-md-2">
             <input
               type="surname"
-              v-model="surname"
+              v-model="reg.prezime"
               class="form-control"
               id="imputSurname"
               placeholder="Prezime"
+              required
             />
           </div>
           <div class="col-md-1">
             <input
               type="godine"
-              v-model="godine"
+              v-model="reg.godine"
               class="form-control"
               id="imputAgge"
               placeholder="Godine"
+              required
             />
           </div>
         </div>
@@ -38,45 +40,117 @@
           <div class="col-md-5">
             <input
               type="email"
-              v-model="email"
+              v-model="reg.email"
               class="form-control"
               id="exampleInputEmail1"
               placeholder="Enter email"
+              required
             />
           </div>
         </div>
 
-        <div class="row justify-content-center ">
+        <div class="row justify-content-center">
           <div class="col-md-3 custom">
             <input
               type="password"
-              v-model="password"
+              v-model="reg.password"
               class="form-control"
               id="exampleInputPassword1"
               placeholder="Password"
+              required
             />
           </div>
-          <div class="col-md-3  custom">
+          <div class="col-md-3 custom">
             <input
               type="password"
-              v-model="repeatPassword"
+              v-model="reg.repass"
               class="form-control"
               id="exampleInputPassword2"
               placeholder="Repeat password"
+              required
             />
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button
+          type="submit"
+          @click.prevent="register()"
+          class="btn btn-primary"
+        >
+          Submit
+        </button>
+
+        
       </form>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
+import ProfilVolonter from "./ProfilVolonter.vue";
+import router from "@/router";
 
+export default {
+  name: "register",
+  created() {
+    localStorage.clear();
+  },
+  data() {
+    return {
+      reg: {
+        ime: "",
+        prezime: "",
+        godine: null,
+        email: "",
+        password: "",
+        repass: "",
+      },
+    };
+  },
+  async mounted() {},
+  methods: {
+    register() {
+      if (
+        !this.reg.ime ||
+        !this.reg.prezime ||
+        !this.reg.godine ||
+        !this.reg.email ||
+        !this.reg.password ||
+        !this.reg.repass
+      )
+        alert("Sva polja moraju biti upisana!");
+      else {
+        if (this.reg.password != this.reg.repass) {
+          alert("Lozinka mora biti jednaka u oba polja");
+          return;
+        } else {
+          axios
+            .post("http://localhost:3001/register", this.reg)
+            .then((response) => {
+              console.log(response);
+              if (response.data) {
+                if(response.data=="Korisnik već postoji"){
+                    alert("korisnik već postoji");
+                }
+                else{
+                alert("Uspiješna registracija");
+                console.log(response.data);
+                console.log("uspijesan unos");
 
+                this.$router.push({
+                  name: "login",
+                });
+            }
+              }
+            });
+        }
+      }
+    },
+  },
 
+  components: { router },
+};
 </script>
 
 <style scoped>
@@ -101,14 +175,12 @@ h1 {
   margin-bottom: 20px;
   margin-top: 30px;
 }
- .custom{
-
-    width: 270px;
- 
- }
- button {
-/*   margin: 1em; */
-margin-top: 30px;
+.custom {
+  width: 270px;
+}
+button {
+  /*   margin: 1em; */
+  margin-top: 30px;
   font-weight: bold;
   font-size: larger;
   font-family: Arial;
@@ -117,11 +189,9 @@ margin-top: 30px;
   border-color: #a020f0;
   --bs-btn-hover-bg: #a020f0;
 }
-p{
+p {
   font-size: smaller;
   opacity: 60%;
   color: #a020f0;
 }
-
-
 </style>

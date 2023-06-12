@@ -37,7 +37,6 @@
 
 <script>
 import axios from "axios";
-import ProfilVolonter from "./ProfilVolonter.vue";
 import router from "@/router";
 
 export default {
@@ -46,7 +45,7 @@ export default {
         localStorage.clear();
     },
     async mounted() {
-        let dataCheck = localStorage.getItem("ime");
+        let dataCheck = localStorage.getItem("broj_aktivnosti");
         if (dataCheck) {
             this.$router.push({ name: "profilVolonter" });
         }
