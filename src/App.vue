@@ -24,12 +24,12 @@
             <a>Profil</a>
         </li>
  -->
-        <li v-if="profilvol" v-on:click="profilCheck()" class="navbar_element">
+        <li v-if="profilvol" v-on:click="check()" class="navbar_element">
           <router-link style="text-decoration: none" to="/profilVolonter"
             >Profil</router-link
           >
         </li>
-        <li v-if="profiladm" v-on:click="profilCheck()"  class="navbar_element">
+        <li v-if="profiladm" v-on:click="check()"  class="navbar_element">
           <router-link style="text-decoration: none" to="/profilAdmin"
             >Profil</router-link
           >
@@ -63,18 +63,18 @@ export default {
   },
 
   created(){
+
     this.check()
-    this.profilCheck()
   },
   watch:{
     loggedIn(){
       this.check()
     },
     profilvol(){
-        this.profilCheck()
+        this.check()
     },
     profiladm(){
-      this.profilCheck()
+      this.check()
     }
   },
   async mounted() {},
@@ -89,18 +89,9 @@ export default {
       this.profilvol=false;
       this.$router.push({ name: "login" });
     },
-    check() {
-      if (localStorage.length > 0) {
-        console.log(localStorage.getItem("prezime"));
-        this.loggedIn = true;
-        console.log(this.loggedIn);
-      } else {
-        this.loggedIn = false;
-        console.log(this.loggedIn);
-      }
-    },
+
     
-    profilCheck(){
+    check(){
       let admin=localStorage.getItem("pozicija");
       let provjera=localStorage.getItem("ime");
       console.log(provjera," ",admin);
@@ -109,10 +100,13 @@ export default {
           this.profiladm=true;
 
         else this.profilvol=true;
+
+        this.loggedIn=true;
       }
       else{
         this.profiladm=false;
         this.profilvol=false;
+        this.loggedIn=false;
       }
         
 
