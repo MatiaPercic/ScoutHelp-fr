@@ -5,7 +5,7 @@
       style="background-color: #a020f0"
     >
       <a class="navbar_title">
-        <img src="@/assets/scouthelp.png" alt="" height="50" />ScoutHelp
+        <img src="@/assets/scouthelp.png" alt="" height="60" />ScoutHelp
       </a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 
@@ -24,7 +24,7 @@
             <a>Profil</a>
         </li>
  -->
-        <li v-if="profilvol" v-on:click="profilCheck()"  class="navbar_element">
+        <li v-if="profilvol" v-on:click="profilCheck()" class="navbar_element">
           <router-link style="text-decoration: none" to="/profilVolonter"
             >Profil</router-link
           >
@@ -146,32 +146,40 @@ export default {
   text-align: left;
   font-family: "Arial";
   color: #fff;
-  font-size: 30px;
-  padding-right: 50%;
+  font-size: 40px;
+  padding-right: 62%;
 
   align-items: center;
+  &:hover{
+    color:#fff;
+  }
 }
 
 .navbar_element {
   text-align: right;
   font-family: "Arial";
   color: #fff;
-  font-size: 15px;
-  margin-left: 5px;
+  font-size: 13px;
+  margin-left: 10px;
   text-decoration: none;
+
+
 }
 
 nav {
-  padding: 30px;
+  padding: 50px;
   a {
     font-weight: bold;
     color: #fff;
     text-align: right;
-    font-size: 20px;
+    font-size: 27px;
     margin-right: 0;
-
+    transition: color 0.3s;
+  &:hover{
+    color:aquamarine;
+  }
     &.router-link-exact-active {
-      color: #42b983;
+      color:yellow;
     }
   }
 }
