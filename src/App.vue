@@ -8,17 +8,29 @@
         <img src="@/assets/scouthelp.png" alt="" height="50" />ScoutHelp
       </a>
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li v-if="!loggedIn" class="navbar_element">
+
+      <li v-if="!loggedIn" class="navbar_element">
           <router-link style="text-decoration: none" to="/">Login</router-link>
-        </li>
+        </li> 
+        
+
         
         <li v-if="!loggedIn" class="navbar_element">
           <router-link style="text-decoration: none" to="/register"
             >Register</router-link
           >
         </li>
-        <li  v-if="loggedIn" class="navbar_element">
+<!--         <li  v-if="loggedIn" v-on:click="profilCheck()" class="navbar_element">
+            <a>Profil</a>
+        </li>
+ -->
+        <li v-if="profilvol" v-on:click="profilCheck()"  class="navbar_element">
           <router-link style="text-decoration: none" to="/profilVolonter"
+            >Profil</router-link
+          >
+        </li>
+        <li v-if="profiladm" v-on:click="profilCheck()"  class="navbar_element">
+          <router-link style="text-decoration: none" to="/profilAdmin"
             >Profil</router-link
           >
         </li>
@@ -45,15 +57,24 @@ export default {
   data() {
     return {
       loggedIn: false,
+      profilvol:false,
+      profiladm:false
     };
   },
 
   created(){
     this.check()
+    this.profilCheck()
   },
   watch:{
     loggedIn(){
       this.check()
+    },
+    profilvol(){
+        this.profilCheck()
+    },
+    profiladm(){
+      this.profilCheck()
     }
   },
   async mounted() {},
@@ -64,6 +85,8 @@ export default {
       console.log(localStorage.getItem("ime"));
       this.loggedIn = false;
       console.log(this.loggedIn);
+      this.profiladm=false;
+      this.profilvol=false;
       this.$router.push({ name: "login" });
     },
     check() {
@@ -75,6 +98,36 @@ export default {
         this.loggedIn = false;
         console.log(this.loggedIn);
       }
+    },
+    
+    profilCheck(){
+      let admin=localStorage.getItem("pozicija");
+      let provjera=localStorage.getItem("ime");
+      console.log(provjera," ",admin);
+      if(provjera){
+        if(admin)
+          this.profiladm=true;
+
+        else this.profilvol=true;
+      }
+      else{
+        this.profiladm=false;
+        this.profilvol=false;
+      }
+        
+
+
+      
+      /* if(provjera && this.$route.path!=="/profilAdmin")
+        this.$router.replace({name:"profilAdmin"});
+
+      else if(!provjera && this.$route.path!=="/profilVolonter")
+        this.$router.replace({name:"profilVolonter"});
+
+      else 
+        return; */
+      
+
     },
   },
 };
@@ -105,6 +158,7 @@ export default {
   color: #fff;
   font-size: 15px;
   margin-left: 5px;
+  text-decoration: none;
 }
 
 nav {
