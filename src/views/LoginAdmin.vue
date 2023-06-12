@@ -5,13 +5,12 @@
       <p> 
         <router-link to="/"> Prijava volontera</router-link>
       </p>
- <!--      <div class="container">
+       <div class="container">
         <form
           class="form-horizontal"
           @submit="login()"
           action="#"
-          onsubmit="return false"
-        >
+          onsubmit="return false">
           <input
             type="email"
             v-model="loginCredentials.email"
@@ -31,7 +30,7 @@
   
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-      </div> -->
+      </div> 
     </div>
   </template>
   
@@ -42,35 +41,28 @@
   
   export default {
       name: "loginAdmin",
-   /*        created() {
+       created() {
           localStorage.clear();
       },
-      async mounted() {
-          let dataCheck = localStorage.getItem("ime");
-          if (dataCheck) {
-              this.$router.push({ name: "profilVolonter" });
-          }
-      },
+      async mounted() {},
       methods: {
           clearUser() {
               localStorage.removeItem("ime");
               localStorage.removeItem("prezime");
               localStorage.removeItem("godine");
               localStorage.removeItem("email");
-              localStorage.removeItem("broj_aktivnosti");
-              localStorage.removeItem("broj_volonterskih_sati");
+              localStorage.removeItem("pozicija");
           },
           async setUser(user) {
               localStorage.setItem("ime", user.ime);
               localStorage.setItem("prezime", user.prezime);
               localStorage.setItem("godine", user.godine);
               localStorage.setItem("email", user.email);
-              localStorage.setItem("broj_aktivnosti", user.broj_aktivnosti);
-              localStorage.setItem("broj_volonterskih_sati", user.broj_volonterskih_sati);
+              localStorage.setItem("pozicija", user.pozicija);
           },
           login() {
               axios
-                  .post("http://localhost:3001/login", this.loginCredentials)
+                  .post("http://localhost:3001/loginAdmin", this.loginCredentials)
                   .then((response) => {
                   console.log(response);
                   if (response.data) {
@@ -79,7 +71,7 @@
                       this.setUser(response.data);
                       console.log(localStorage.getItem("ime"));
                       this.$router.replace({
-                          name: "profilVolonter",
+                          name: "profilAdmin",
                       });
                   }
                   else
@@ -95,8 +87,8 @@
               },
           };
       },
-      components: { router } */
-  };
+      components: { router } 
+    }
   </script> 
   
   <style scoped>
