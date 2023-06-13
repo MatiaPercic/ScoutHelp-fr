@@ -179,7 +179,7 @@ h1 {
   width: 270px;
 }
 button {
-  /*   margin: 1em; */
+
   margin-top: 30px;
   font-weight: bold;
   font-size: larger;
