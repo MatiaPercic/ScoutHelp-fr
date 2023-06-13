@@ -1,16 +1,14 @@
 <template>
     <div class="about">
-      <h2>Prijava administratora</h2>
+      <h1>Prijava administratora</h1>
   
       <p> 
-        <router-link to="/"> Prijava volontera</router-link>
+        <router-link to="/" class="custom-text"> Prijava volontera</router-link>
       </p>
        <div class="container">
-        <form
-          class="form-horizontal"
-          @submit="login()"
-          action="#"
-          onsubmit="return false">
+        <form>
+          <div class="row justify-content-center">
+            <div class="col-md-5">
           <input
             type="email"
             v-model="loginCredentials.email"
@@ -19,7 +17,10 @@
             aria-describedby="emailHelp"
             placeholder="Unesi email"
           />
-  
+       </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-5">
           <input
             type="password"
             v-model="loginCredentials.password"
@@ -27,8 +28,11 @@
             id="exampleInputPassword1"
             placeholder="Unesi lozinku"
           />
+          </div>
+          </div>
   
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" @click.prevent="login()"
+          class="btn btn-primary">Submit</button>
         </form>
       </div> 
     </div>
@@ -92,13 +96,12 @@
   </script> 
   
   <style scoped>
-  h2 {
-    margin-top: 20px;
+  h1 {
+    margin-top: 30px;
   }
   .container {
-    width: 400px;
     padding-left: 20px;
-    padding-top: 15px;
+    padding-top: 12px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -107,27 +110,27 @@
   
   .form-control {
     text-align: justify;
-    font-size: 17px;
-    font-weight: unset;
+    font-size: 18px;
+    opacity:65%;
     border-block-color: #a020f0;
-    border-width: 1.5px;
-    margin-bottom: 30px;
+    border-width: 2px;
+    margin-bottom: 20px;
     margin-top: 30px;
   }
   
   button {
-    margin: 1em;
+   margin-top: 30px;
     font-weight: bold;
-    font-size: large;
+    font-size: larger;
     font-family: Arial;
     color: #a020f0;
     background-color: #fff;
     border-color: #a020f0;
     --bs-btn-hover-bg: #a020f0;
   }
-  p{
-    font-size: smaller;
-    opacity: 50%;
+  .custom-text{
+    font-size: medium;
+    opacity: 65%;
     color: #a020f0;
   }
   </style>

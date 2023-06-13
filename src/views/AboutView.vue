@@ -30,13 +30,15 @@
 </template>
 
 <style scoped>
-
+h1{
+  margin-top: 30px;
+}
 .plain {
 
   
-  font-size: 15px;
+  font-size: 24px;
   font-weight: bold;
-  margin: 15px;
+  margin: 20px;
 
  
 }
