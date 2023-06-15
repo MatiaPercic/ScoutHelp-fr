@@ -1,37 +1,33 @@
 <template>
-  <h3>Profil admina</h3>
-</template>
-
-<script>
-export default {
-  name: "profilAdmin",
-};
-</script>
-<template>
   <div class="about">
-    <h3 class="row">
+
+    <h1 class="row">
       <div class="row justify-content-between">
         <div class="col-4">Osobni podaci:</div>
         <div class="col-4" style="text-align: center">Izbornik:</div>
       </div>
-    </h3>
+    </h1>
 
     <div class="row justify-content-between">
-      <div class="col-4">
+      <div class="col-5">
         <p class="plain">
           <br />
           Ime i Prezime: {{ admin.ime }} {{ admin.prezime }}
           <br />
           <br />
-          Goidine: {{ admin.godine }}
+          Godine: {{ admin.godine }}
           <br />
           <br />
-          pozicija: {{ admin.pozicija }}
+          Pozicija: {{ admin.pozicija }}
           <br />
           <br />
         </p>
 
-        <p class="sub_text">Izmjena osobnih podataka</p>
+        <p class="align">
+          <router-link to="/updateAdmin" class="sub_text">
+            Izmijena osobnih podataka</router-link
+          >
+        </p>
       </div>
 
       <div class="col-4">
@@ -96,34 +92,29 @@ export default {
 <style scoped>
 .plain {
   text-align: left;
-  margin-top: 25px;
+  margin-top: 20px;
   margin-left: 10%;
-  margin-top: 1%;
+  font-size: 25px;
 }
 
-h3 {
-  margin-top: 3%;
+h1 {
+
   text-align: left;
   margin-left: 3%;
-  margin-top: 3%;
+  margin-top: 50px;
   color: #a020f0;
 }
 
-.sub_text {
+.align {
   text-align: left;
-  margin-top: 45px;
-  margin-left: 4%;
-  font-size: smaller;
+  margin-left: 10%;
+  margin-top: 65px;
+}
+.sub_text {
+  font-size: medium;
   text-decoration: underline;
   font-style: oblique;
-  opacity: 40%;
-  color: #a020f0;
-}
-
-.ogranicenje {
-  text-align: center;
-  font-size: 12px;
-  opacity: 60%;
+  opacity: 65%;
   color: #a020f0;
 }
 </style>

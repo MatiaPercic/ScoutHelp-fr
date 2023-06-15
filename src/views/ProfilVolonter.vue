@@ -121,7 +121,7 @@ export default {
 }
 
 h1 {
-  margin-left: 0%;
+
   text-align: left;
   margin-left: 3%;
   margin-top: 50px;

@@ -50,7 +50,7 @@
           </div>
         </div>
 
-        <button type="button" @click="update()" class="btn btn-primary">
+        <button type="button" @click.prevent="update()" class="btn btn-primary">
           Izmijena
         </button>
       </form>
@@ -99,20 +99,33 @@ export default {
             localStorage.setItem("ime", this.volonter_new.new_ime);
             localStorage.setItem("prezime", this.volonter_new.new_prezime);
             localStorage.setItem("godine", this.volonter_new.new_godine);
-            localStorage.setItem("password",this.volonter_new.new_godine);
+            localStorage.setItem("password",this.volonter_new.new_password);
         },
         async update() {
+                  if (
+        !this.volonter_new.new_ime ||
+        !this.volonter_new.new_prezime ||
+        !this.volonter_new.new_godine ||
+        !this.volonter_new.new_password 
+      )
+        alert("Sva polja moraju biti upisana!");
+    else{
             axios
                 .put("http://localhost:3001/updateVolonter", this.volonter_new)
                 .then((response) => {
                 if (response) {
                     alert("Uspiješno izmijenjeni osobni podaci!");
+                    this.set();
+                    this.$router.push({
+                        name:"profilVolonter"
+                      });
                 }
                 else
                     alert("Greška pri izmijeni podataka");
                 console.log(this.volonter_new);
                 console.log(this.volonter);
             });
+          }
         },
     },
   
