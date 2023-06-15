@@ -1,15 +1,15 @@
 <template>
   <div class="about">
 
-    <h3 class="row">
+    <h1 class="row">
       <div class="row justify-content-between">
         <div class="col-4">Osobni podaci:</div>
         <div class="col-4" style="text-align: center">Izbornik:</div>
       </div>
-    </h3>
+    </h1>
 
     <div class="row justify-content-between">
-      <div class="col-4">
+      <div class="col-5">
         <p class="plain">
           <br />
           Ime i Prezime: {{ volonter.ime }} {{ volonter.prezime }}
@@ -26,7 +26,9 @@
           <br />
         </p>
     
-      <p class="sub_text">Izmjena lozinke ili email-a</p>
+      <p class="align">
+        <router-link to="/updateVolonter" class="sub_text"> Izmijena osobnih podataka</router-link>
+      </p>
     </div>
  
 
@@ -54,15 +56,15 @@
     </button>
 
     <p class="ogranicenje">
-      *Volonterima nije omogućeno mijenjanje
-      <br />
-      niti unos novih podataka vezanih za  
-      <br />
-      volonterske aktivnosti. U slučaju 
+      *Volonterima nije omogućeno mijenjanje niti unos
       <br/>
-      primjećivanja krivih podataka, obratite se
-      <br/> 
+      novih podataka vezanih za volonterske aktivnosti.
+      <br />
+      U slučaju primjećivanja krivih podataka, obratite se
+      <br/>
       osobi s administrativnom ulogom
+      <br/> 
+     
     </p>
   </div>
 </div>
@@ -85,6 +87,8 @@ export default {
         godine: null,
         broj_aktivnosti: null,
         broj_volonterskih_sati: null,
+        email:"",
+        password:""
       },
     };
   },
@@ -100,6 +104,8 @@ export default {
       this.volonter.godine = localStorage.getItem("godine");
       this.volonter.broj_aktivnosti = localStorage.getItem("broj_aktivnosti");
       this.volonter.broj_volonterskih_sati = localStorage.getItem("broj_volonterskih_sati");
+      this.volonter.email=localStorage.getItem("email");
+      this.volonter.password=localStorage.getItem("password");
     },
   },
 };
@@ -108,34 +114,39 @@ export default {
 <style scoped>
 .plain {
   text-align: left;
-  margin-top: 25px;
+  margin-top: 20px;
   margin-left: 10%;
-  margin-top: 1%;
+  font-size: 25px;
+
 }
 
-h3 {
-  margin-top: 3%;
+h1 {
+  margin-left: 0%;
   text-align: left;
   margin-left: 3%;
-  margin-top: 3%;
+  margin-top: 50px;
   color: #a020f0;
 }
 
-.sub_text {
+.align{
   text-align: left;
-  margin-top: 45px;
-  margin-left: 4%;
-  font-size: smaller;
+  margin-left: 10%;
+  margin-top: 65px;
+}
+.sub_text {
+  
+  
+  font-size: medium;
   text-decoration: underline;
   font-style: oblique;
-  opacity: 40%;
+  opacity: 65%;
   color: #a020f0;
 }
 
 .ogranicenje {
   text-align: center;
-  font-size: 12px;
-  opacity: 60%;
+  font-size: medium;
+  opacity: 65%;
   color: #a020f0;
 
 }

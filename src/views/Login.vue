@@ -58,6 +58,7 @@ export default {
             localStorage.removeItem("prezime");
             localStorage.removeItem("godine");
             localStorage.removeItem("email");
+            localStorage.removeItem("password");
             localStorage.removeItem("broj_aktivnosti");
             localStorage.removeItem("broj_volonterskih_sati");
         },
@@ -65,7 +66,8 @@ export default {
             localStorage.setItem("ime", user.ime);
             localStorage.setItem("prezime", user.prezime);
             localStorage.setItem("godine", user.godine);
-            localStorage.setItem("email", user.email);
+            localStorage.setItem("email", this.loginCredentials.email);
+            localStorage.setItem("password",this.loginCredentials.password);
             localStorage.setItem("broj_aktivnosti", user.broj_aktivnosti);
             localStorage.setItem("broj_volonterskih_sati", user.broj_volonterskih_sati);
         },
