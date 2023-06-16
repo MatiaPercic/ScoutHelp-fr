@@ -1,6 +1,5 @@
 <template>
   <div class="about">
-
     <h1 class="row">
       <div class="row justify-content-between">
         <div class="col-4">Osobni podaci:</div>
@@ -30,29 +29,28 @@
         </p>
       </div>
 
-      <div class="col-4">
-        <button
-          type="button"
-          class="btn btn-primary"
-          style="
-            margin: 4em;
-            font-weight: bold;
-            font-family: Arial;
-            color: #a020f0;
-            background-color: #fff;
-            border-color: #a020f0;
-          "
-        >
-          <router-link
-            style="
-              font-size: 15px;
-              color: #a020f0
-              text-decoration: none; "
-            to="/aktivnostiadmin"
-            >Prikaz volonterskih aktivnosti</router-link
-          >
+      <div class="col-4 ">
+        <button type="button" class="btn btn-outline-secondary">
+
+            Prikaz volonterskih aktivnosti
+          
+        </button>
+
+        <button type="button" @click="buttonRegister()" class="btn btn-outline-secondary">
+
+            Registracija novog administratora
+
         </button>
       </div>
+    </div>
+
+    <div>
+      <b-alert show variant="warning" v-if="showWarn">
+        <router-link to="/updateAdmin" class="alert-link"
+          >Lozinka postavljena na 'admin1234' pri registraciji. Promijenite ju
+          radi osobne sigurnosti!</router-link
+        >
+      </b-alert>
     </div>
   </div>
 </template>
@@ -70,12 +68,15 @@ export default {
         prezime: "",
         godine: null,
         pozicija: "",
+        password: "",
       },
+      showWarn: false,
     };
   },
 
   mounted() {
     this.info();
+    this.passwordWarn();
   },
 
   methods: {
@@ -84,7 +85,18 @@ export default {
       this.admin.prezime = localStorage.getItem("prezime");
       this.admin.godine = localStorage.getItem("godine");
       this.admin.pozicija = localStorage.getItem("pozicija");
+      this.admin.password = localStorage.getItem("password");
     },
+    passwordWarn() {
+      if (this.admin.password == "admin1234") this.showWarn = true;
+    },
+    buttonRegister(){
+      this.$router.push({
+        name:"registerAdmin"
+      });
+    },
+  
+
   },
 };
 </script>
@@ -98,7 +110,6 @@ export default {
 }
 
 h1 {
-
   text-align: left;
   margin-left: 3%;
   margin-top: 50px;
@@ -108,7 +119,8 @@ h1 {
 .align {
   text-align: left;
   margin-left: 10%;
-  margin-top: 65px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 .sub_text {
   font-size: medium;
@@ -116,5 +128,24 @@ h1 {
   font-style: oblique;
   opacity: 65%;
   color: #a020f0;
+}
+
+button {
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: larger;
+  font-family: Arial;
+  color: #a020f0;
+  background-color: #fff;
+  border-color: #a020f0;
+
+}
+ button:hover{
+  background-color: #a020f0;
+  color: #fff;
+}
+
+b-alert {
+  margin-top: 20px;
 }
 </style>
