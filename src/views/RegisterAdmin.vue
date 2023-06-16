@@ -4,6 +4,8 @@
   
       <div class="container">
         <form>
+            <p> *Lozinka novog administratora automatski je postavljena na admin1234</p>
+
           <div class="row justify-content-center">
             <div class="col-md-2">
               <input
@@ -143,7 +145,7 @@
   
   .container {
     padding-left: 20px;
-    padding-top: 50px;
+    padding-top: 25px;
     display: block;
     margin-left: auto;
     margin-right: auto;
@@ -173,9 +175,9 @@
     --bs-btn-hover-bg: #a020f0;
   }
   p {
-    font-size: smaller;
-    opacity: 60%;
-    color: #a020f0;
-  }
+  font-size: medium;
+  opacity: 65%;
+  color: #a020f0;
+}
   </style>
   
