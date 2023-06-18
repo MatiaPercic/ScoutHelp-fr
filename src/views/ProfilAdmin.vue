@@ -30,7 +30,7 @@
       </div>
 
       <div class="col-4 ">
-        <button type="button" class="btn btn-outline-secondary">
+        <button type="button" @click="buttonAktivnosti()" class="btn btn-outline-secondary">
 
             Prikaz volonterskih aktivnosti
           
@@ -93,6 +93,11 @@ export default {
     buttonRegister(){
       this.$router.push({
         name:"registerAdmin"
+      });
+    },
+    buttonAktivnosti(){
+      this.$router.push({
+        name:"aktivnosti"
       });
     },
   
