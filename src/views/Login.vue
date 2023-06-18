@@ -2,36 +2,39 @@
   <div class="about">
     <h1>Prijava volontera</h1>
 
-    <p > 
-      <router-link to="/loginAdmin" class="custom-text"> Prijava administratora</router-link>
+    <p>
+      <router-link to="/loginAdmin" class="custom-text">
+        Prijava administratora</router-link
+      >
     </p>
     <div class="container">
       <form>
         <div class="row justify-content-center">
-            <div class="col-md-5">
-        <input
-          type="email"
-          v-model="loginCredentials.email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Unesi email"
-        />
+          <div class="col-md-5">
+            <input
+              type="email"
+              v-model="loginCredentials.email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+              placeholder="Unesi email"
+            />
+          </div>
         </div>
-      </div>
         <div class="row justify-content-center">
           <div class="col-md-5">
-        <input
-          type="password"
-          v-model="loginCredentials.password"
-          class="form-control"
-          id="exampleInputPassword1"
-          placeholder="Unesi lozinku"
-        />
+            <input
+              type="password"
+              v-model="loginCredentials.password"
+              class="form-control"
+              id="exampleInputPassword1"
+              placeholder="Unesi lozinku"
+            />
+          </div>
         </div>
-      </div>
-        <button type="submit" @click.prevent="login()"
-        class="btn btn-primary">Submit</button>
+        <button type="submit" @click.prevent="login()" class="btn btn-primary">
+          Submit
+        </button>
       </form>
     </div>
   </div>
@@ -42,63 +45,70 @@ import axios from "axios";
 import router from "@/router";
 
 export default {
-    name: "login",
-    created() {
-        localStorage.clear();
+  name: "login",
+  created() {
+    localStorage.clear();
+  },
+  async mounted() {
+    let dataCheck = localStorage.getItem("broj_aktivnosti");
+    if (dataCheck) {
+      this.$router.push({ name: "profilVolonter" });
+    }
+  },
+  methods: {
+    clearUser() {
+      localStorage.removeItem("ime");
+      localStorage.removeItem("prezime");
+      localStorage.removeItem("godine");
+      localStorage.removeItem("email");
+      localStorage.removeItem("password");
+      localStorage.removeItem("broj_aktivnosti");
+      localStorage.removeItem("broj_volonterskih_sati");
     },
-    async mounted() {
-        let dataCheck = localStorage.getItem("broj_aktivnosti");
-        if (dataCheck) {
-            this.$router.push({ name: "profilVolonter" });
-        }
+    async setUser(user) {
+      localStorage.setItem("ime", user.ime);
+      localStorage.setItem("prezime", user.prezime);
+      localStorage.setItem("godine", user.godine);
+      localStorage.setItem("email", this.loginCredentials.email);
+      localStorage.setItem("password", this.loginCredentials.password);
     },
-    methods: {
-        clearUser() {
-            localStorage.removeItem("ime");
-            localStorage.removeItem("prezime");
-            localStorage.removeItem("godine");
-            localStorage.removeItem("email");
-            localStorage.removeItem("password");
-            localStorage.removeItem("broj_aktivnosti");
-            localStorage.removeItem("broj_volonterskih_sati");
-        },
-        async setUser(user) {
-            localStorage.setItem("ime", user.ime);
-            localStorage.setItem("prezime", user.prezime);
-            localStorage.setItem("godine", user.godine);
-            localStorage.setItem("email", this.loginCredentials.email);
-            localStorage.setItem("password",this.loginCredentials.password);
-            localStorage.setItem("broj_aktivnosti", user.broj_aktivnosti);
-            localStorage.setItem("broj_volonterskih_sati", user.broj_volonterskih_sati);
-        },
-        login() {
-            axios
-                .post("http://localhost:3001/login", this.loginCredentials)
-                .then((response) => {
-                console.log(response);
-                if (response.data) {
-                    console.log(response.data);
-                    this.clearUser();
-                    this.setUser(response.data);
-                    console.log(localStorage.getItem("ime"));
-                    this.$router.replace({
-                        name: "profilVolonter",
-                    });
-                }
-                else
-                    alert("Greška pri prijavljivanju, pokušajte ponovno!");
+    login() {
+      axios
+        .post("http://localhost:3001/login", this.loginCredentials)
+        .then((response) => {
+          console.log(response);
+          if (response.data) {
+            this.setHours(this.loginCredentials);
+            console.log(response.data);
+            this.clearUser();
+            this.setUser(response.data);
+            console.log(localStorage.getItem("ime"));
+            this.$router.replace({
+              name: "profilVolonter",
             });
-        },
+          } else alert("Greška pri prijavljivanju, pokušajte ponovno!");
+        });
     },
-    data() {
-        return {
-            loginCredentials: {
-                email: "",
-                password: "",
-            },
-        };
+    setHours(credentials) {
+      const { email } = credentials;
+      axios
+        .put("http://localhost:3001/updateSati", { email })
+        .then((response) => {
+          console.log(response);
+          localStorage.setItem("broj_aktivnosti", response.data.broj_aktivnosti);
+          localStorage.setItem("broj_volonterskih_sati", response.data.broj_volonterskih_sati);
+        });
     },
-    components: { router }
+  },
+  data() {
+    return {
+      loginCredentials: {
+        email: "",
+        password: "",
+      },
+    };
+  },
+  components: { router },
 };
 </script>
 
@@ -112,7 +122,6 @@ h1 {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  
 }
 
 .form-control {
@@ -135,9 +144,9 @@ button {
   border-color: #a020f0;
   --bs-btn-hover-bg: #a020f0;
 }
-.custom-text{
+.custom-text {
   font-size: medium;
- opacity: 65%;
+  opacity: 65%;
   color: #a020f0;
 }
 </style>
