@@ -41,6 +41,8 @@
             Registracija novog administratora
 
         </button>
+
+        <button type="button" @click="buttonVolonteri()" class="btn btn-outline-secondary">Prikaz svih volontera</button>
       </div>
     </div>
 
@@ -98,6 +100,11 @@ export default {
     buttonAktivnosti(){
       this.$router.push({
         name:"aktivnosti"
+      });
+    },
+    buttonVolonteri(){
+      this.$router.push({
+        name:"sviVolonteri"
       });
     },
   
