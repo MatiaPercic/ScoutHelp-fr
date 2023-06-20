@@ -71,8 +71,8 @@
 </div>
 
 <div>
-  <b-alert show variant="warning" v-if="showWarn">
-      Lista rada sa željenim dobnim skupinama praza - promijeniti radi evidencije!
+  <b-alert show variant="warning" v-if="showWarn" class="alert">
+      Lista rada sa željenim dobnim skupinama je prazna - promijeniti radi evidencije!
   </b-alert>
 </div>
 
@@ -155,7 +155,7 @@ h1 {
 .align{
   text-align: left;
   margin-left: 10%;
-  margin-top: 65px;
+  margin-top: 30px;
 }
 .sub_text {
   
@@ -173,5 +173,9 @@ h1 {
   opacity: 65%;
   color: #a020f0;
 
+}
+
+.alert{
+  margin-top: 20px;
 }
 </style>
