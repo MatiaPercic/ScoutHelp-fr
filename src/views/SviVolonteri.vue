@@ -17,54 +17,54 @@
 
         <table class="table table-striped table-bordered table-outlined">
       <thead>
-        <tr>
-          <th class="custom col1">Ime</th>
-          <th class="custom col2">Prezime</th>
-          <th class="custom col3">Godine</th>
-          <th class="custom col4">email adresa</th>
-          <th class="custom col5">Dobne skupine rada</th>
-          <th class="custom col6">Ukupan broj sati</th>
-          <th class="custom col6">Broj sati prošle godine</th>
-          <th class="custom col6">Broj sati ove godine</th>
+        <tr class="tr-custom">
+          <th class="custom col5">Ime</th>
+          <th class="custom col5">Prezime</th>
+          <th class="custom col2">Godine</th>
+          <th class="custom col5">email adresa</th>
+          <th class="custom col6">Dobne skupine rada</th>
+          <th class="custom col2">Ukupan broj sati</th>
+          <th class="custom col2">Sati prošle akademske godine</th>
+          <th class="custom col2">Sati ove akademske godine</th>
         </tr>
       </thead>
 
       <tbody v-if="checkAll">
         <tr v-for="volEach in volonterLista" :key="volEach._id" v-if="volEach">
-          <td class="col1">{{ volEach.ime }}</td>
-          <td class="col2">{{ volEach.prezime }}</td>
+          <td class="col5">{{ volEach.ime }}</td>
+          <td class="col5">{{ volEach.prezime }}</td>
           <td class="col2">{{ volEach.godine }}</td>
-          <td class="col2">{{ volEach.email }}</td>
-          <td class="col3">{{ formatArray(volEach.dobne_skupine_rada) }}</td>
-          <td class="col4">{{ volEach.broj_volonterskih_sati }}</td>
-          <td class="col5">{{ volEach.broj_sati_prosle }}</td>
-          <td class="col6">{{ volEach.broj_sati_ove }}</td>
+          <td class="col5">{{ volEach.email }}</td>
+          <td class="col6">{{ formatArray(volEach.dobne_skupine_rada) }}</td>
+          <td class="col2">{{ volEach.broj_volonterskih_sati }}</td>
+          <td class="col2">{{ volEach.broj_sati_prosle }}</td>
+          <td class="col2">{{ volEach.broj_sati_ove }}</td>
         </tr>
       </tbody>
 
       <tbody v-if="checkOver">
         <tr v-for="volEach in volonterLista" :key="volEach._id" v-if="volEach && volEach.godine>=18">
-          <td class="col1">{{ volEach.ime }}</td>
-          <td class="col2">{{ volEach.prezime }}</td>
+          <td class="col5">{{ volEach.ime }}</td>
+          <td class="col5">{{ volEach.prezime }}</td>
           <td class="col2">{{ volEach.godine }}</td>
-          <td class="col2">{{ volEach.email }}</td>
-          <td class="col3">{{ formatArray(volEach.dobne_skupine_rada) }}</td>
-          <td class="col4">{{ volEach.broj_volonterskih_sati }}</td>
-          <td class="col5">{{ volEach.broj_sati_prosle }}</td>
-          <td class="col6">{{ volEach.broj_sati_ove }}</td>
+          <td class="col5">{{ volEach.email }}</td>
+          <td class="col6">{{ formatArray(volEach.dobne_skupine_rada) }}</td>
+          <td class="col2">{{ volEach.broj_volonterskih_sati }}</td>
+          <td class="col2">{{ volEach.broj_sati_prosle }}</td>
+          <td class="col2">{{ volEach.broj_sati_ove }}</td>
         </tr>
       </tbody>
 
       <tbody v-if="checkUnder">
         <tr v-for="volEach in volonterLista" :key="volEach._id" v-if="volEach && volEach.godine<18">
-          <td class="col1">{{ volEach.ime }}</td>
-          <td class="col2">{{ volEach.prezime }}</td>
+          <td class="col5">{{ volEach.ime }}</td>
+          <td class="col5">{{ volEach.prezime }}</td>
           <td class="col2">{{ volEach.godine }}</td>
-          <td class="col2">{{ volEach.email }}</td>
-          <td class="col3">{{ formatArray(volEach.dobne_skupine_rada) }}</td>
-          <td class="col4">{{ volEach.broj_volonterskih_sati }}</td>
-          <td class="col5">{{ volEach.broj_sati_prosle }}</td>
-          <td class="col6">{{ volEach.broj_sati_ove }}</td>
+          <td class="col5">{{ volEach.email }}</td>
+          <td class="col6">{{ formatArray(volEach.dobne_skupine_rada) }}</td>
+          <td class="col2">{{ volEach.broj_volonterskih_sati }}</td>
+          <td class="col2">{{ volEach.broj_sati_prosle }}</td>
+          <td class="col2">{{ volEach.broj_sati_ove }}</td>
         </tr>
       </tbody>
     </table>
@@ -174,8 +174,14 @@ h1{
     overflow-y: hidden;
 }
 
-.custom-pagination ::v-deep nav{
-    padding: 20px;
+
+.tr-custom{
+    vertical-align:middle;
+
+}
+.col2{
+    width: 100px;
+    text-align: center;
 }
 
 </style>
