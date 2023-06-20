@@ -112,6 +112,12 @@ export default {
 </script>
 
 <style scoped>
+
+.about {
+  overflow-x: hidden;
+}
+
+
 .plain {
   text-align: left;
   margin-top: 20px;

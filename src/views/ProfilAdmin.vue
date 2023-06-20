@@ -1,13 +1,13 @@
 <template>
   <div class="about">
     <h1 class="row">
-      <div class="row justify-content-between">
+      <div class="row justify-content-between ">
         <div class="col-4">Osobni podaci:</div>
         <div class="col-4" style="text-align: center">Izbornik:</div>
       </div>
     </h1>
 
-    <div class="row justify-content-between">
+    <div class="row justify-content-between ">
       <div class="col-5">
         <p class="plain">
           <br />
@@ -107,6 +107,11 @@ export default {
 </script>
 
 <style scoped>
+
+.about {
+  overflow-x: hidden;
+}
+
 .plain {
   text-align: left;
   margin-top: 20px;
@@ -134,6 +139,7 @@ h1 {
   opacity: 65%;
   color: #a020f0;
 }
+
 
 button {
   margin-top: 30px;
