@@ -72,7 +72,8 @@ export default {
       localStorage.setItem("godine", user.godine);
       localStorage.setItem("email", this.loginCredentials.email);
       localStorage.setItem("password", this.loginCredentials.password);
-      localStorage.setItem("dobne_skupine_rada", user.dobne_skupine_rada);
+      localStorage.setItem("broj_aktivnosti", user.broj_aktivnosti);
+      localStorage.setItem("broj_volonterskih_sati", user.broj_volonterskih_sati);
     },
     login() {
       axios
@@ -97,8 +98,6 @@ export default {
         .put("http://localhost:3001/updateSati", { email })
         .then((response) => {
           console.log(response);
-          localStorage.setItem("broj_aktivnosti", response.data.broj_aktivnosti);
-          localStorage.setItem("broj_volonterskih_sati", response.data.broj_volonterskih_sati);
         });
     },
   },
