@@ -64,6 +64,7 @@ export default {
       localStorage.removeItem("password");
       localStorage.removeItem("broj_aktivnosti");
       localStorage.removeItem("broj_volonterskih_sati");
+      localStorage.removeItem("dobne_skupine_rada");
     },
     async setUser(user) {
       localStorage.setItem("ime", user.ime);
@@ -71,6 +72,7 @@ export default {
       localStorage.setItem("godine", user.godine);
       localStorage.setItem("email", this.loginCredentials.email);
       localStorage.setItem("password", this.loginCredentials.password);
+      localStorage.setItem("dobne_skupine_rada", user.dobne_skupine_rada);
     },
     login() {
       axios
