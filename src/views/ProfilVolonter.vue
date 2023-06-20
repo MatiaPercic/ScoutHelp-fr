@@ -108,9 +108,7 @@ import axios from "axios";
 
 
 export default {
-  // name: "profilVolonter",
-
-
+   name: "profilVolonter",
   data() {
     return {
       volonter: {
