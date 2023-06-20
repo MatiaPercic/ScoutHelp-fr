@@ -67,7 +67,15 @@
      
     </p>
   </div>
+
 </div>
+
+<div>
+  <b-alert show variant="warning" v-if="showWarn">
+      Lista rada sa željenim dobnim skupinama praza - promijeniti radi evidencije!
+  </b-alert>
+</div>
+
 </div>
 </template>
 
@@ -88,13 +96,16 @@ export default {
         broj_aktivnosti: null,
         broj_volonterskih_sati: null,
         email:"",
-        password:""
+        password:"",
+        dobne_skupine_rada:[]
       },
+      showWarn:false,
     };
   },
 
   mounted() {
     this.info();
+    this.dobneWarn();
   },
 
   methods: {
@@ -106,7 +117,14 @@ export default {
       this.volonter.broj_volonterskih_sati = localStorage.getItem("broj_volonterskih_sati");
       this.volonter.email=localStorage.getItem("email");
       this.volonter.password=localStorage.getItem("password");
+      this.volonter.dobne_skupine_rada=localStorage.getItem("dobne_skupine_rada");
+      console.log(this.volonter.dobne_skupine_rada);
     },
+
+    dobneWarn(){
+      if(this.volonter.dobne_skupine_rada.length==0)
+          this.showWarn=true;
+    }
   },
 };
 </script>
