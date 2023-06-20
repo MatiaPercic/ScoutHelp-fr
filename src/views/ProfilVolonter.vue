@@ -37,7 +37,7 @@
       type="button"
       class="btn btn-primary"
       style="
-        margin: 4em;
+        margin: 1em;
         font-weight: bold;
         font-family: Arial;
         color: #a020f0;
@@ -52,6 +52,28 @@
             text-decoration: none; "
         to="/aktivnostiVolonter"
         >Prikaz volonterskih aktivnosti</router-link
+      >
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-primary"
+      style="
+        margin: 1em;
+        font-weight: bold;
+        font-family: Arial;
+        color: #a020f0;
+        background-color: #fff;
+        border-color: #a020f0;
+      "
+    >
+      <router-link
+        style="
+            font-size: 15px;
+            color: #a020f0
+            text-decoration: none; "
+        to="/dobneSkupine"
+        >Postava dobnih skupina</router-link
       >
     </button>
 
@@ -72,7 +94,9 @@
 
 <div>
   <b-alert show variant="warning" v-if="showWarn" class="alert">
+    <router-link to="/dobneSkupine" class="alert-link">
       Lista rada sa željenim dobnim skupinama je prazna - promijeniti radi evidencije!
+    </router-link>
   </b-alert>
 </div>
 
@@ -105,7 +129,8 @@ export default {
 
   mounted() {
     this.info();
-    this.dobneWarn();
+    this.dobneGet();
+
   },
 
   methods: {
@@ -117,14 +142,24 @@ export default {
       this.volonter.broj_volonterskih_sati = localStorage.getItem("broj_volonterskih_sati");
       this.volonter.email=localStorage.getItem("email");
       this.volonter.password=localStorage.getItem("password");
-      this.volonter.dobne_skupine_rada=localStorage.getItem("dobne_skupine_rada");
-      console.log(this.volonter.dobne_skupine_rada);
+      console.log(this.volonter.broj_aktivnosti);
     },
 
-    dobneWarn(){
-      if(this.volonter.dobne_skupine_rada.length==0)
-          this.showWarn=true;
-    }
+
+
+
+
+    dobneGet(){
+        axios
+        .post("http://localhost:3001/dobneVolontera",this.volonter)
+        .then((response)=>{
+          this.volonter.dobne_skupine_rada=response.data.dobne_skupine_rada;
+          console.log(this.volonter.dobne_skupine_rada);
+          localStorage.setItem("dobne_skupine_rada",this.volonter.dobne_skupine_rada);
+          if(this.volonter.dobne_skupine_rada.length==0)
+                this.showWarn=true;
+        });
+      }
   },
 };
 </script>
