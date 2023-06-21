@@ -51,9 +51,21 @@
 </template>
 
 <script>
+
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+
 export default {
   name: "App",
-
+  components: {
+    BootstrapVue,
+  },
+  created() {
+    this.$bvModal = BootstrapVue;
+    this.$bvToast = BootstrapVue;
+    this.$bvModal = IconsPlugin;
+  },
   data() {
     return {
       loggedIn: false,
