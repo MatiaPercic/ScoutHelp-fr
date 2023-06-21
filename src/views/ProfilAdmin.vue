@@ -29,7 +29,7 @@
         </p>
       </div>
 
-      <div class="col-4 ">
+      <div class="col-3 ">
         <button type="button" @click="buttonAktivnosti()" class="btn btn-outline-secondary">
 
             Prikaz volonterskih aktivnosti
@@ -43,6 +43,8 @@
         </button>
 
         <button type="button" @click="buttonVolonteri()" class="btn btn-outline-secondary">Prikaz svih volontera</button>
+
+        <button type="button" @click="buttonNewAktivnosti()" class="btn btn-outline-secondary">Unos nove Aktivnosti</button>
       </div>
     </div>
 
@@ -107,8 +109,12 @@ export default {
         name:"sviVolonteri"
       });
     },
-  
 
+      buttonNewAktivnosti(){
+      this.$router.push({
+        name:"novaAktivnost"
+      });
+    }
   },
 };
 </script>
@@ -131,6 +137,7 @@ h1 {
   margin-left: 3%;
   margin-top: 50px;
   color: #a020f0;
+
 }
 
 .align {
@@ -147,6 +154,9 @@ h1 {
   color: #a020f0;
 }
 
+.col-3{
+  margin-right: 3%;
+}
 
 button {
   margin-top: 30px;
