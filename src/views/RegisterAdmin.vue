@@ -144,6 +144,12 @@ export default {
           });
       }
     },
+
+    buttonProfil(){
+    this.$router.push({
+      name: "profilAdmin"
+    });
+  }
   },
 };
 
