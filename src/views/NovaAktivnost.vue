@@ -119,15 +119,13 @@
           </b>
         </div>
       </div>
-
-      <div class="row row3 justify-content-center">
-        <div class="col-2">
+      <div class="d-grid gap-2 d-md-block">
           <button class="btn outline-primary profButton" type="button" v-on:click="profil()">Povratak na profil</button>
         </div>
         <div class="col-2">
         <button class="btn outline-primary newaktButton" type="submit">Unesi novu aktivnost</button>
       </div>
-      </div>
+
 
     </form>
 
