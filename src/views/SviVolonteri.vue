@@ -70,6 +70,10 @@
     </table>
 
 
+      <button type="button" @click="buttonProfil()" class="btn btn-primary">
+          Povratak na profil
+        </button>
+
     </div>
 </template>
 
@@ -154,6 +158,11 @@ export default{
             this.checkAll=true;
     },
 
+    profil(){
+    this.$router.push({
+      name: "profilAdmin"
+    });
+  }
 
 
     },
@@ -183,5 +192,21 @@ h1{
     width: 100px;
     text-align: center;
 }
+.btn{
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: larger;
+  font-family: Arial;
+  color: #a020f0;
+  background-color: #fff;
+  border-color: #a020f0;
+  margin-left: 10px;
+}
+
+.btn:hover {
+  background-color: #a020f0;
+  color: #fff;
+}
+
 
 </style>

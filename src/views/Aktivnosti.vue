@@ -33,6 +33,9 @@
       @paginate="promjeneStr"
       :options="paginationOptions"
     />
+    <button type="button" @click="buttonProfil()" class="btn btn-primary">
+          Povratak na profil
+        </button>
   </div>
 </template>
 
@@ -96,7 +99,11 @@ export default {
       return array.length > 0 ? array.join(", ") : "-";
     },
 
-
+    buttonProfil(){
+          this.$router.push({
+           name:"profilVolonter"
+          });
+        },
   },
 };
 </script>
@@ -132,5 +139,21 @@ h1 {
 
 .col6 {
   width: 100px;
+}
+
+button {
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: larger;
+  font-family: Arial;
+  color: #a020f0;
+  background-color: #fff;
+  border-color: #a020f0;
+  margin-left: 10px;
+}
+
+.btn:hover {
+  background-color: #a020f0;
+  color: #fff;
 }
 </style>
