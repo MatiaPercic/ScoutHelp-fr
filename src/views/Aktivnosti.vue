@@ -101,7 +101,7 @@ export default {
 
     buttonProfil(){
           this.$router.push({
-           name:"profilVolonter"
+           name:"profilAdmin"
           });
         },
   },

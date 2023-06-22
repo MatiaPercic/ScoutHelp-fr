@@ -63,11 +63,11 @@
           </div>
         </div>
         <div class="d-grid gap-2 d-md-block">
-      <button type="button" @click="buttonProfil()" class="btn btn-outline-primary">
+      <button type="button" @click="buttonProfil()" class="btn outline-primary">
           Povratak na profil
         </button>
 
-        <button type="button" @click.prevent="update()" class="btn btn-primary">
+        <button type="button" @click.prevent="update()" class="btn outline-primary">
           Izmijena
         </button>
         </div>
@@ -149,7 +149,7 @@ export default {
         });
     }
     },
-    profil(){
+    buttonProfil(){
     this.$router.push({
       name: "profilAdmin"
     });

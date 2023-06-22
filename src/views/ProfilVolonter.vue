@@ -81,11 +81,6 @@
       *Volonterima nije omogućeno mijenjanje niti unos
       <br/>
       novih podataka vezanih za volonterske aktivnosti.
-      <br />
-      U slučaju primjećivanja krivih podataka, obratite se
-      <br/>
-      osobi s administrativnom ulogom
-      <br/> 
      
     </p>
   </div>

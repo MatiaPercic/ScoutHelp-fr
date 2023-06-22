@@ -12,7 +12,7 @@
             id="example-datepicker"
             placeholder="Odaberi datum"
             v-model="datumIznos"
-            class="mb-2"
+            class="mb-2 custom-datepicker"
             :start-weekday="1"
             :date-format-options="{
               year: 'numeric',
@@ -122,10 +122,10 @@
 
       <div class="row row3 justify-content-center">
         <div class="col-2">
-          <button class="btn btn-primary profButton" type="button" v-on:click="profil()">Povratak na profil</button>
+          <button class="btn outline-primary profButton" type="button" v-on:click="profil()">Povratak na profil</button>
         </div>
         <div class="col-2">
-        <button class="btn btn-primary newaktButton" type="submit">Unesi novu aktivnost</button>
+        <button class="btn outline-primary newaktButton" type="submit">Unesi novu aktivnost</button>
       </div>
       </div>
 
@@ -325,7 +325,10 @@ button {
   margin-top: 20px;
 }
 
-.profButton .newaktButton{
+.custom-datepicker{
+  opacity: 100%;
+}
+button{
   margin-top: 30px;
   font-weight: bold;
   font-size: larger;
@@ -337,7 +340,7 @@ button {
   width: 100px;
 }
 
-.profButton:hover .newaktButton:hover {
+button:hover {
   background-color: #a020f0;
   color: #fff;
 }

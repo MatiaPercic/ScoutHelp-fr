@@ -158,7 +158,7 @@ export default{
             this.checkAll=true;
     },
 
-    profil(){
+    buttonProfil(){
     this.$router.push({
       name: "profilAdmin"
     });
