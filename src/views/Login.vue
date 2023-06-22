@@ -81,7 +81,7 @@ export default {
         .then((response) => {
           console.log(response);
           if (response.data) {
-            this.setHours(this.loginCredentials);
+            this.updateHours(this.loginCredentials);
             console.log(response.data);
             this.clearUser();
             this.setUser(response.data);
@@ -92,7 +92,7 @@ export default {
           } else alert("Greška pri prijavljivanju, pokušajte ponovno!");
         });
     },
-    setHours(credentials) {
+    updateHours(credentials) {
       const { email } = credentials;
       axios
         .put("https://scouthelp-f893.onrender.com/updateSati", { email })

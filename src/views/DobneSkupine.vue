@@ -31,7 +31,7 @@
           Povratak na profil
         </button>
 
-      <button class="btn btn-primary" @click="unesiPromijene()">Unesi promijene</button>
+      <button class="btn btn-primary" @click="updateDobneSkupine()">Unesi promijene</button>
     </div>
   </div>
 </template>
@@ -79,7 +79,7 @@ export default {
         name:"profilVolonter"
       });
     },
-    unesiPromijene(){
+    updateDobneSkupine(){
         this.volonter.dobne_skupine_rada=this.dobneLista.filter(item=>item.checked).map(item=>item.dobna_skupina);
 
         axios

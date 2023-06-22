@@ -65,7 +65,7 @@ export default {
     };
   },
   created() {
-    this.findAktivnosti();
+    this.findAktivnostiVolonter();
   },
   computed: {
     totalPages() {
@@ -74,7 +74,7 @@ export default {
   },
 
   methods: {
-    findAktivnosti() {
+    findAktivnostiVolonter() {
       axios
       .post("https://scouthelp-f893.onrender.com/aktivnostiVolonter", this.volonter)
       .then((response) => {
