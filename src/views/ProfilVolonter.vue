@@ -149,7 +149,7 @@ export default {
 
     dobneGet(){
         axios
-        .post("http://localhost:3001/dobneVolontera",this.volonter)
+        .post("https://scouthelp-f893.onrender.com/dobneVolontera",this.volonter)
         .then((response)=>{
           this.volonter.dobne_skupine_rada=response.data.dobne_skupine_rada;
           console.log(this.volonter.dobne_skupine_rada);

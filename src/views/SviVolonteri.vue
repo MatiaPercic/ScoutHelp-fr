@@ -98,22 +98,22 @@ export default{
 
         getVolonteri(){
             axios
-            .get("http://localhost:3001/sviVolonteri")
+            .get("https://scouthelp-f893.onrender.com/sviVolonteri")
             .then((response)=>{
                 this.volonterLista=response.data;
                  for(let i = 0; i < this.volonterLista.length; i++){
                     let vol=this.volonterLista[i];
-                    axios.post("http://localhost:3001/volonterCurrentYear", vol)
+                    axios.post("https://scouthelp-f893.onrender.com/volonterCurrentYear", vol)
                     .then((response)=>{
                         vol.broj_sati_ove=response.data.broj_volonterskih_sati;
                     });
 
-                    axios.post("http://localhost:3001/volonterLastYear", vol)
+                    axios.post("https://scouthelp-f893.onrender.com/volonterLastYear", vol)
                     .then((response)=>{
                         vol.broj_sati_prosle=response.data.broj_volonterskih_sati;
                     });
 
-                    axios.post("http://localhost:3001/dobneVolontera", vol)
+                    axios.post("https://scouthelp-f893.onrender.com/dobneVolontera", vol)
                     .then((response)=>{
                         vol.dobne_skupine_rada=response.data.dobne_skupine_rada;
                     });

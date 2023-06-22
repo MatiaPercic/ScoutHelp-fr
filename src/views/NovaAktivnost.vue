@@ -2,7 +2,7 @@
   <div class="about">
     <h1>Unos nove aktivnosti</h1>
 
-    <div class="grupni">
+    <form v-on:submit.prevent="unosAktivnosti">
       <div class="row row1">
         <div class="col-4 custom-date">
           <label for="example-datepicker" class="cal-label"
@@ -11,7 +11,7 @@
           <b-form-datepicker
             id="example-datepicker"
             placeholder="Odaberi datum"
-            v-model="value"
+            v-model="datumIznos"
             class="mb-2"
             :start-weekday="1"
             :date-format-options="{
@@ -22,9 +22,10 @@
             menu-class="w-100"
             calendar-width="100%"
             locale="hr"
-          ></b-form-datepicker>
+            required  >
+          </b-form-datepicker>
 
-          <p>Prikaz u tablici aktivnosti: '{{ value }}'</p>
+          <p>Prikaz u tablici aktivnosti: '{{ datumIznos }}'</p>
         </div>
 
         <div class="col-md-5 custom-opis" style="align-self: center">
@@ -34,12 +35,13 @@
             type="text"
             id="input-opis"
             placeholder="Unesi Opis"
+            required
           />
         </div>
 
         <div class="col-md-2 custom-sati">
           <label for="satiID"><b>Unesi broj sati</b></label>
-          <input type="number" id="satiID" v-model="odabirSati" min="1" />
+          <input type="number" id="satiID" v-model="odabirSati" min="1" required/>
         </div>
       </div>
 
@@ -49,6 +51,7 @@
             v-model="odabirVolonter"
             @input="dodajVolonter"
             class="custom-volInput"
+            required
           >
             <option value="" disabled selected>Odaberi volontere</option>
             <option
@@ -66,6 +69,7 @@
             v-model="odabirAdmini"
             @input="dodajAdmin"
             class="custom-admInput"
+            required
           >
             <option value="" disabled selected>Odaberi administratore</option>
             <option v-for="adm in adminiOpcije" :key="adm" :value="adm">
@@ -79,6 +83,7 @@
             v-model="odabirOblici"
             @input="dodajOblik"
             class="custom-oblInput"
+            required
           >
             <option value="" disabled selected>Odaberi oblike rada</option>
             <option v-for="oblik in obliciOpcije" :key="oblik" :value="oblik">
@@ -117,26 +122,28 @@
 
       <div class="row row3 justify-content-center">
         <div class="col-2">
-          <button class="profButton">Povratak na profil</button>
+          <button class="profButton" type="button" v-on:click="profil()">Povratak na profil</button>
         </div>
         <div class="col-2">
-        <button class="newaktButton">Unesi novu aktivnost</button>
+        <button class="newaktButton" type="submit">Unesi novu aktivnost</button>
       </div>
       </div>
 
-    </div>
+    </form>
+
+
   </div>
 </template>
 
 <script>
 import axios from "axios";
 
+
 export default {
   name: "novaAktivnost",
 
   data() {
     return {
-      value: null,
       weekday: 1,
       hideHeader: true,
 
@@ -151,6 +158,7 @@ export default {
 
       odabirSati: 0,
       odabirOpis: "",
+      datumIznos: null,
 
       new_aktivnost: {
         datum: "",
@@ -158,7 +166,7 @@ export default {
         oblik_rada: [],
         volonteri: [],
         admin: [],
-        sati: "",
+        sati: null,
       },
     };
   },
@@ -170,7 +178,7 @@ export default {
 
   methods: {
     getVolonteriOpcije() {
-      axios.get("http://localhost:3001/volonteriEmail").then((response) => {
+      axios.get("https://scouthelp-f893.onrender.com/volonteriEmail").then((response) => {
         for (let i = 0; i < response.data.length; i++)
           this.volonteriOpcije.push(response.data[i].email);
       });
@@ -191,7 +199,7 @@ export default {
     },
 
     getAdminiOpcije() {
-      axios.get("http://localhost:3001/adminiEmail").then((response) => {
+      axios.get("https://scouthelp-f893.onrender.com/adminiEmail").then((response) => {
         for (let i = 0; i < response.data.length; i++)
           this.adminiOpcije.push(response.data[i].email);
       });
@@ -210,7 +218,7 @@ export default {
     },
 
     getObliciOpcije() {
-      axios.get("http://localhost:3001/obliciRada").then((response) => {
+      axios.get("https://scouthelp-f893.onrender.com/obliciRada").then((response) => {
         for (let i = 0; i < response.data.length; i++)
           this.obliciOpcije.push(response.data[i].opis);
       });
@@ -227,6 +235,41 @@ export default {
     oblIzbrisi() {
       this.new_aktivnost.oblik_rada = [];
     },
+
+
+    unosAktivnosti(){
+      console.log(this.datumIznos);
+      if(this.new_aktivnost.volonteri.length==0 ||
+        this.new_aktivnost.admin.length==0 || 
+        this.new_aktivnost.oblik_rada.length==0||
+        this.datumIznos==null || this.odabirOpis.length==0 || this.odabirSati==0){
+        alert("potreban unos svih polja");
+              return;
+        }
+      else{
+
+      this.new_aktivnost.datum=this.datumIznos;
+      this.new_aktivnost.opis=this.odabirOpis;
+      this.new_aktivnost.sati=this.odabirSati;
+      axios
+      .post("https://scouthelp-f893.onrender.com/addAktivnost", this.new_aktivnost)
+      .then((response)=>{
+        if(response.data=="Upiješan unos"){
+            alert ("Uspiješan unos nove aktivnosti");
+        }
+        else {
+        alert("Aktivnosti već unesena");
+        }
+    });
+
+    }
+  },
+  profil(){
+    this.$router.push({
+      name: "profilAdmin"
+    });
+  }
+
   },
 };
 </script>

@@ -111,7 +111,7 @@ export default {
         alert("Sva polja moraju biti upisana!");
     else{
             axios
-                .put("http://localhost:3001/updateVolonter", this.volonter_new)
+                .put("https://scouthelp-f893.onrender.com/updateVolonter", this.volonter_new)
                 .then((response) => {
                 if (response) {
                     alert("Uspiješno izmijenjeni osobni podaci!");

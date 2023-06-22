@@ -76,7 +76,7 @@ export default {
   methods: {
     findAktivnosti() {
       axios
-      .post("http://localhost:3001/aktivnostiVolonter", this.volonter)
+      .post("https://scouthelp-f893.onrender.com/aktivnostiVolonter", this.volonter)
       .then((response) => {
         this.aktivnosti = response.data;
         this.totalItems = response.data.length;

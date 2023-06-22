@@ -126,7 +126,7 @@ export default {
           return;
         } else {
           axios
-            .post("http://localhost:3001/register", this.reg)
+            .post("https://scouthelp-f893.onrender.com/register", this.reg)
             .then((response) => {
               console.log(response);
               if (response.data) {

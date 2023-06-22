@@ -77,7 +77,7 @@ export default {
     },
     login() {
       axios
-        .post("http://localhost:3001/login", this.loginCredentials)
+        .post("https://scouthelp-f893.onrender.com/login", this.loginCredentials)
         .then((response) => {
           console.log(response);
           if (response.data) {
@@ -95,7 +95,7 @@ export default {
     setHours(credentials) {
       const { email } = credentials;
       axios
-        .put("http://localhost:3001/updateSati", { email })
+        .put("https://scouthelp-f893.onrender.com/updateSati", { email })
         .then((response) => {
           console.log(response);
         });
