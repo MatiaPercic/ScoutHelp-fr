@@ -178,7 +178,7 @@ export default {
 
   methods: {
     getVolonteriOpcije() {
-      axios.get("http://localhost:3001/volonteriEmail").then((response) => {
+      axios.get("https://scouthelp-f893.onrender.com/volonteriEmail").then((response) => {
         for (let i = 0; i < response.data.length; i++)
           this.volonteriOpcije.push(response.data[i].email);
       });
@@ -199,7 +199,7 @@ export default {
     },
 
     getAdminiOpcije() {
-      axios.get("http://localhost:3001/adminiEmail").then((response) => {
+      axios.get("https://scouthelp-f893.onrender.com/adminiEmail").then((response) => {
         for (let i = 0; i < response.data.length; i++)
           this.adminiOpcije.push(response.data[i].email);
       });
@@ -218,7 +218,7 @@ export default {
     },
 
     getObliciOpcije() {
-      axios.get("http://localhost:3001/obliciRada").then((response) => {
+      axios.get("https://scouthelp-f893.onrender.com/obliciRada").then((response) => {
         for (let i = 0; i < response.data.length; i++)
           this.obliciOpcije.push(response.data[i].opis);
       });
@@ -252,7 +252,7 @@ export default {
       this.new_aktivnost.opis=this.odabirOpis;
       this.new_aktivnost.sati=this.odabirSati;
       axios
-      .post("http://localhost:3001/addAktivnost", this.new_aktivnost)
+      .post("https://scouthelp-f893.onrender.com/addAktivnost", this.new_aktivnost)
       .then((response)=>{
         if(response.data=="Upiješan unos"){
             alert ("Uspiješan unos nove aktivnosti");

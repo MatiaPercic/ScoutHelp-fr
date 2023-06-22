@@ -65,7 +65,7 @@ export default {
     },
 
     getDobneLista() {
-      axios.get("http://localhost:3001/dobneSkupine").then((response) => {
+      axios.get("https://scouthelp-f893.onrender.com/dobneSkupine").then((response) => {
         this.dobneLista = response.data.map((item) => ({
           dobna_skupina: item.dobna_skupina,
           _id: item._id,
@@ -83,7 +83,7 @@ export default {
         this.volonter.dobne_skupine_rada=this.dobneLista.filter(item=>item.checked).map(item=>item.dobna_skupina);
 
         axios
-        .put("http://localhost:3001/updateDobneSkupine", this.volonter)
+        .put("https://scouthelp-f893.onrender.com/updateDobneSkupine", this.volonter)
         .then((response)=>{
             console.log(response.data);
             alert ("Uspiješno promijenjene dobne skupine s kojima želite raditi - pritisni ok za povratak na profil ")

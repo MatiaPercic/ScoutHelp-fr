@@ -69,7 +69,7 @@ export default {
     },
     login() {
       axios
-        .post("http://localhost:3001/loginAdmin", this.loginCredentials)
+        .post("https://scouthelp-f893.onrender.com/loginAdmin", this.loginCredentials)
         .then((response) => {
           console.log(response);
           if (response.data) {

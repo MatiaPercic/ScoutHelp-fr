@@ -130,7 +130,7 @@ export default {
     else{
 
       axios
-        .put("http://localhost:3001/updateAdmin", this.admin_new)
+        .put("https://scouthelp-f893.onrender.com/updateAdmin", this.admin_new)
         .then((response) => {
           if (response) {
             alert("Uspiješno izmijenjeni osobni podaci!");

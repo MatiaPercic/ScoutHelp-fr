@@ -111,7 +111,7 @@
           alert("Sva polja moraju biti upisana!");
         else {
             axios
-              .post("http://localhost:3001/registerAdmin", this.admin)
+              .post("https://scouthelp-f893.onrender.com/registerAdmin", this.admin)
               .then((response) => {
                 console.log(response);
                 if (response.data) {
