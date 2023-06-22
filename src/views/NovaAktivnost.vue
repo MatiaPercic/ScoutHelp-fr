@@ -122,10 +122,10 @@
 
       <div class="row row3 justify-content-center">
         <div class="col-2">
-          <button class="profButton" type="button" v-on:click="profil()">Povratak na profil</button>
+          <button class="btn btn-primary profButton" type="button" v-on:click="profil()">Povratak na profil</button>
         </div>
         <div class="col-2">
-        <button class="newaktButton" type="submit">Unesi novu aktivnost</button>
+        <button class="btn btn-primary newaktButton" type="submit">Unesi novu aktivnost</button>
       </div>
       </div>
 
@@ -324,8 +324,22 @@ button {
 .row3{
   margin-top: 20px;
 }
-.newaktButton .profButton{
-  width: 100px;
 
+.profButton .newaktButton{
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: larger;
+  font-family: Arial;
+  color: #a020f0;
+  background-color: #fff;
+  border-color: #a020f0;
+  margin-left: 10px;
+  width: 100px;
 }
+
+.profButton:hover .newaktButton:hover {
+  background-color: #a020f0;
+  color: #fff;
+}
+
 </style>

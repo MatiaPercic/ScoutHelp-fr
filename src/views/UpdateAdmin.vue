@@ -62,10 +62,15 @@
             />
           </div>
         </div>
+        <div class="d-grid gap-2 d-md-block">
+      <button type="button" @click="buttonProfil()" class="btn btn-outline-primary">
+          Povratak na profil
+        </button>
 
         <button type="button" @click.prevent="update()" class="btn btn-primary">
           Izmijena
         </button>
+        </div>
       </form>
     </div>
   </div>
@@ -144,6 +149,12 @@ export default {
         });
     }
     },
+    profil(){
+    this.$router.push({
+      name: "profilAdmin"
+    });
+  }
+
   },
 };
 </script>
@@ -170,4 +181,20 @@ h1 {
   margin-bottom: 20px;
   margin-top: 30px;
 }
+button{
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: larger;
+  font-family: Arial;
+  color: #a020f0;
+  background-color: #fff;
+  border-color: #a020f0;
+  margin-left: 10px;
+}
+
+button:hover {
+  background-color: #a020f0;
+  color: #fff;
+}
+
 </style>
