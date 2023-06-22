@@ -119,13 +119,15 @@
           </b>
         </div>
       </div>
-      <div class="d-grid gap-2 d-md-block">
-          <button class="btn outline-primary profButton" type="button" v-on:click="profil()">Povratak na profil</button>
+
+      <div class="row row3 justify-content-center">
+        <div class="col-2">
+          <button class="btn btn-primary profButton" type="button" v-on:click="profil()">Povratak na profil</button>
         </div>
         <div class="col-2">
-        <button class="btn outline-primary newaktButton" type="submit">Unesi novu aktivnost</button>
+        <button class="btn btn-primary newaktButton" type="submit">Unesi novu aktivnost</button>
       </div>
-
+      </div>
 
     </form>
 
@@ -326,7 +328,7 @@ button {
 .custom-datepicker{
   opacity: 100%;
 }
-button{
+.profButton .newaktButton{
   margin-top: 30px;
   font-weight: bold;
   font-size: larger;
@@ -338,7 +340,7 @@ button{
   width: 100px;
 }
 
-button:hover {
+.profButton:hover .newaktButton:hover {
   background-color: #a020f0;
   color: #fff;
 }
